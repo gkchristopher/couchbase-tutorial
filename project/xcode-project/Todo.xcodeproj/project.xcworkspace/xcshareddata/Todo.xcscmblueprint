@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "789007DEAD37B58ACD9940C5C06E4F68363312CA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "789007DEAD37B58ACD9940C5C06E4F68363312CA" : 0,
+    "06E75B0359C4DBC07A876A5DE0F222901893A82D" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0473771E-DD52-4983-B6B0-4C8B4213BCB8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "789007DEAD37B58ACD9940C5C06E4F68363312CA" : "mobile-training-todo\/",
+    "06E75B0359C4DBC07A876A5DE0F222901893A82D" : "couchbase-mobile-portal\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Todo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Todo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:couchbaselabs\/couchbase-mobile-portal.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "06E75B0359C4DBC07A876A5DE0F222901893A82D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/couchbaselabs\/mobile-training-todo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "789007DEAD37B58ACD9940C5C06E4F68363312CA"
+    }
+  ]
+}
