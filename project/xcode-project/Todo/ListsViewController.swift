@@ -183,9 +183,8 @@ class ListsViewController: UITableViewController, UISearchResultsUpdating {
         let listsView = database.viewNamed("list/listsByName")
         if listsView.mapBlock == nil {
             listsView.setMapBlock({ (doc, emit) in
-                if let type: String = doc["type"] as? String, let name = doc["name"]
-                    , type == "task-list" {
-                        emit(name, nil)
+                if let type: String = doc["type"] as? String, let name = doc["name"], type == "task-list" {
+                    emit(name, nil)
                 }
             }, version: "1.0")
         }
@@ -199,12 +198,13 @@ class ListsViewController: UITableViewController, UISearchResultsUpdating {
         let incompTasksCountView = database.viewNamed("list/incompleteTasksCount")
         if incompTasksCountView.mapBlock == nil {
             incompTasksCountView.setMapBlock({ (doc, emit) in
-                if let type: String = doc["type"] as? String , type == "task" {
-                    if let list = doc["taskList"] as? [String: AnyObject], let listId = list["id"],
-                        let complete = doc["complete"] as? Bool , !complete {
-                        emit(listId, nil)
-                    }
-                }
+                guard let type: String = doc["type"] as? String,
+                    type == "task",
+                    let list = doc["taskList"] as? [String: AnyObject],
+                    let listId = list["id"],
+                    let complete = doc["complete"] as? Bool,
+                    !complete else { return }
+                emit(listId, nil)
                 }, reduce: { (keys, values, reredeuce) in
                 return values.count
             }, version: "1.0")
