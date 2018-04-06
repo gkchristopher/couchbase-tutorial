@@ -111,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginViewControllerDelega
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.observeDatabaseChange), name:Notification.Name.cblDatabaseChange, object: database)
     }
     
-    func observeDatabaseChange(notification: Notification) {
+    @objc func observeDatabaseChange(notification: Notification) {
         if(!(notification.userInfo?["external"] as! Bool)) {
             return;
         }
@@ -145,7 +145,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginViewControllerDelega
         }
     }
     
-    func handleAccessChange(notification: Notification) throws {
+    @objc func handleAccessChange(notification: Notification) throws {
         let change = notification.userInfo?["change"] as! CBLDatabaseChange;
         let changedDoc = database.document(withID: change.documentID);
         if(changedDoc == nil || !(changedDoc?.isDeleted)!) {
@@ -303,7 +303,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginViewControllerDelega
             self, name: NSNotification.Name.cblReplicationChange, object: puller)
     }
     
-    func replicationProgress(notification: NSNotification) {
+    @objc func replicationProgress(notification: NSNotification) {
         UIApplication.shared.isNetworkActivityIndicatorVisible =
             (pusher.status == .active || puller.status == .active)
         

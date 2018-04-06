@@ -203,7 +203,7 @@ class TasksViewController: UITableViewController, UISearchResultsUpdating,
     
     // MARK: - Action
     
-    func addAction(sender: AnyObject) {
+    @objc func addAction(sender: AnyObject) {
         Ui.showTextInputDialog(
             onController: self,
             withTitle: "New Task",
