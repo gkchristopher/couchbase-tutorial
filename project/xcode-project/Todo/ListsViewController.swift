@@ -250,6 +250,17 @@ class ListsViewController: UITableViewController, UISearchResultsUpdating {
         }
 
         do {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.cblDocumentChange, object: doc, queue: nil) { notification in
+                guard let change = notification.userInfo?["change"] as? CBLDatabaseChange else { return }
+
+                switch doc.isDeleted {
+                case true:
+                    print("🗑")
+                    fallthrough
+                default:
+                    print("Change: \(change)")
+                }
+            }
             return try doc.putProperties(properties)
         } catch let error as NSError {
             Ui.showMessageDialog(onController: self, withTitle: "Error",
@@ -275,7 +286,7 @@ class ListsViewController: UITableViewController, UISearchResultsUpdating {
         // TRAINING: Delete a list
         if list.userProperties?["owner"] as? String != username {
             let moderatorDocId = "moderator." + username;
-            if(database.existingDocument(withID: moderatorDocId) == nil) {
+            guard let _ = database.existingDocument(withID: moderatorDocId) else {
                 Ui.showMessageDialog(onController: self, withTitle: "Error", withMessage: "Required access to delete list missing");
                 return;
             }
