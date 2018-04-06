@@ -13,7 +13,7 @@ let kEncryptionEnabled = false
 let kSyncEnabled = false
 let kSyncGatewayUrl = URL(string: "http://localhost:4984/todo/")!
 let kLoggingEnabled = false
-let kUsePrebuiltDb = false
+let kUsePrebuiltDb = true
 let kConflictResolution = false
 
 @UIApplicationMain
@@ -307,7 +307,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginViewControllerDelega
         UIApplication.shared.isNetworkActivityIndicatorVisible =
             (pusher.status == .active || puller.status == .active)
         
-        let error = pusher.lastError as? NSError;
+        let error = pusher.lastError as NSError?;
         if (error != syncError) {
             syncError = error
             if let errorCode = error?.code {
